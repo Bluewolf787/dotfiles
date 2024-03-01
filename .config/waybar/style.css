@@ -1,0 +1,189 @@
+@import 'waybar-colors.css';
+
+* {
+  /* border: none; */
+  border-radius: 0px;
+  font-family: "CaskaydiaCove NF";
+  font-weight: 500;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+window#waybar {
+  background: rgba(0, 0, 0, 0);
+  opacity: 1;
+}
+
+tooltip {
+  background: @tooltip-bg;
+  border-radius: 7px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}
+
+#workspaces button {
+  padding: 5px;
+  color: @workspace;
+  margin-right: 5px;
+  /* margin-left: 10px; */
+}
+
+#workspaces button.active {
+  color: @foreground;
+}
+
+#window,
+#clock,
+#battery,
+#mpris,
+#pulseaudio,
+#custom-pacman,
+#network,
+#bluetooth,
+#temperature,
+#workspaces,
+#tray,
+#mpd,
+#custom-pomodoro,
+#cpu,
+#memory,
+#disk,
+#custom-spotify,
+#custom-launcher,
+
+#modbackground {
+  background: @background;
+  color: @foreground;
+  opacity: 1;
+  padding: 0px 7px;
+  margin-top: 5px;
+  margin-bottom: 6px;
+  /* border: 1px solid #b5b0a7; */
+}
+
+#backlight {
+  color: @foreground;
+  background: @background;
+  border-radius: 7px 7px 7px 7px;
+  opacity: 1;
+  padding: 0px 7px;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 6px;
+}
+
+#pulseaudio {
+  border-radius: 7px 0px 0px 7px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#pulseaudio.microphone {
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 5px;
+}
+
+#cpu {
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 5px;
+}
+
+#memory {
+  border-radius: 0px;
+}
+
+#disk {
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 5px;
+}
+
+#tray {
+  border-radius: 7px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+#workspaces {
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+#window {
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 60px;
+}
+
+#clock {
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-right: 0px;
+  padding-left: 12px;
+  border-right: 0px;
+}
+
+#network {
+  border-radius: 7px;
+  margin-right: 15px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#bluetooth {
+  border-radius: 7px;
+  margin-right: 5px;
+}
+
+#battery {
+  border-radius: 7px;
+  margin-right: 5px;
+  margin-left: 10px;
+  border-left: 0px;
+}
+
+#custom-spotify {
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#custom-launcher {
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding-right: 12px;
+  padding-left: 10px;
+}
+
+#mpris {
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#mpris.paused {
+  border-bottom: 2px solid @yellow;
+}
+
+#mpd {
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#custom-pacman {
+  border-radius: 7px;
+  margin-right: 5px;
+}
+
+#custom-pomodoro.paused {
+  border-bottom: 2px solid @yellow;
+}
+

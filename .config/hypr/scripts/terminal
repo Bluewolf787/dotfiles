@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $1 == "-f" ]]; then
+	kitty --single-instance --class "kitty_float"
+elif [[ $1 == "--update" ]]; then
+  kitty --single-instance --class "kitty_float" sudo pacman -Syu && yay -Syu
+else
+	kitty --single-instance
+fi
