@@ -77,14 +77,14 @@ body {
 .category {
     display: flex;
     flex-direction: column;
-    width: 220px;
+    width: 250px;
 }
 
 .bookmark {
     display: grid;
     justify-content: space-evenly;
     grid-row-gap: 1em;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     min-width: 32em;
     grid-auto-rows: max-content;
 }
