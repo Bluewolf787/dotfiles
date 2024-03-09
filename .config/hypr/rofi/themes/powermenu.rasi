@@ -10,7 +10,7 @@ window {
   background-color:               @background;
   text-color:                     @foreground;
   border:                  		    0px;
-  border-color:                  	@selected;
+  border-color:                  	@green;
   border-radius:                  12px;
   width:                          450px;
   location:                       center;
