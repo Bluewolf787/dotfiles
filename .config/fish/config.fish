@@ -1,4 +1,13 @@
-# Disable greeting
+# ███████╗██╗███████╗██╗  ██╗
+# ██╔════╝██║██╔════╝██║  ██║
+# █████╗  ██║███████╗███████║
+# ██╔══╝  ██║╚════██║██╔══██║
+# ██║     ██║███████║██║  ██║
+# ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝
+
+# -----------------------------------------------------
+# Disable Greeting
+# -----------------------------------------------------
 set -g fish_greeting
 
 if status is-login
@@ -7,7 +16,9 @@ if status is-login
   end
 end
 
+# -----------------------------------------------------
 # Alias
+# -----------------------------------------------------
 alias ls "exa --icons"
 alias la "ls -a"
 alias ll "exa -l -g --icons"
@@ -29,9 +40,16 @@ alias autoclean "sudo pacman -Sc"
 
 alias nitch "~/.config/nitch/nitch"
 
+# -----------------------------------------------------
+# Fishmarks
+# -----------------------------------------------------
 source ~/.fishmarks/marks.fish
 
+# -----------------------------------------------------
+# PATH
+# -----------------------------------------------------
 export PATH="/opt/flutter/bin/:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export UMLET_HOME="$HOME/bin/Umlet/"
 export PATH="$PATH:$UMLET_HOME"
+
