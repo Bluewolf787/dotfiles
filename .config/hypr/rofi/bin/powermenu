@@ -16,17 +16,17 @@ show_message() {
 
 # Define icon
 
-poweroff=""
+poweroff="󰐥"
 restart="󰜉"
 suspend="󰒲"
-screenoff="󰶐"
+lock="󰌾"
 logout="󰍃"
 
 # Show menu
-returned_choosen="$(echo -e "$poweroff\n$restart\n$suspend\n$screenoff\n$logout" | $rofi_command -dmenu -steal-focus -p "$up_time")"
+returned_choosen="$(echo -e "$poweroff\n$restart\n$lock\n$suspend\n$logout" | $rofi_command -dmenu -steal-focus -p "$up_time")"
 
 # Get confirmation
-if [[ $returned_choosen =~ ($poweroff|$restart|$suspend|$screenoff|$logout) ]]; then
+if [[ $returned_choosen =~ ($poweroff|$restart|$lock|$suspend|$logout) ]]; then
 	returned_confirm=$(show_confirm &)
 fi
 
@@ -50,17 +50,15 @@ case $returned_choosen in
 
 "$suspend")
 	if [[ $returned_confirm =~ (y|yes|Y|YES) ]]; then
-		souce ./lockscreen
 		systemctl suspend
 	else
 		show_message
 	fi
 	;;
 
-"$screenoff")
+"$lock")
 	if [[ $returned_confirm =~ (y|yes|Y|YES) ]]; then
-		source ./lockscreen
-		hyprctl dispatch dpms off
+		hyprlock
 	else
 		show_message
 	fi
