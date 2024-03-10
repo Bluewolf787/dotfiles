@@ -30,7 +30,7 @@ alias bc "bluetoothctl connect 14:3F:A6:A7:D9:81"
 alias be "systemctl enable bluetooth"
 alias bd "systemctl disable bluetooth"
 
-alias clock "tty-clock -c -C 5"
+alias clock "tty-clock -c -C 2"
 
 alias note "nvim ~/Dokumente/notes.txt"
 
