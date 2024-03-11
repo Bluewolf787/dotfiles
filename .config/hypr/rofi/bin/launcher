@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-DIR="$HOME/.config/hypr/"
-
-rofi -show drun -modi drun -theme "$DIR"/rofi/themes/launcher.rasi

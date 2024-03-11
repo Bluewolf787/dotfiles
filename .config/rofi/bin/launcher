@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+DIR="$HOME/.config/rofi/themes/"
+
+rofi \
+  -show drun \
+  -theme $DIR/launcher.rasi
+

@@ -1,0 +1,38 @@
+* {
+  font:           "JetBrains Mono Nerd Font 10";
+	background:			#1E2326;
+	background-alt:	#1E2326;
+	foreground:			#D3C6AA;
+	selected:			  #A7C080;
+	highlight:			#DBBC7F;
+	urgent:				  #E67E80;
+	on:					    #83C092;
+	off:				    #D699B6;
+
+  black:          #272E33;
+  black-darker:   #1E2326;
+
+  red:            #E67E80;
+  red-darker:     #4C3743;
+
+  green:          #A7C080;
+  green-darker:   #3C4841;
+
+  yellow:         #DBBC7F;
+  yellow-darker:  #45443C;
+
+  blue:           #7FBBB3;
+  blue-darker:    #384B55;
+
+  magenta:        #F5C2E7;
+  magenta-darker: #F5C2E7;
+
+  cyan:           #94E2D5;
+  cyan-darker:    #94E2D5;
+
+  white:          #FFFFFF;
+  white-darker:   #FFFFFF;
+
+  element-background-color: #38384d;
+  window-background-color:  #1e2127;
+}

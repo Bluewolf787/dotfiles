@@ -227,7 +227,7 @@
     "format": " {}",
     "interval": 60,
     "exec": "checkupdates | wc -l",
-    "on-click": "~/.config/hypr/scripts/terminal --update; pkill -SIGRTMIN+8 waybar",
+    "on-click": "~/.local/scripts/terminal --update; pkill -SIGRTMIN+8 waybar",
     "signal": 8
   }
 }
