@@ -1,0 +1,101 @@
+#! /usr/bin/env bash
+
+# ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗███████╗██╗  ██╗ ██████╗ ████████╗
+# ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║██╔════╝██║  ██║██╔═══██╗╚══██╔══╝
+# ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║███████╗███████║██║   ██║   ██║   
+# ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║╚════██║██╔══██║██║   ██║   ██║   
+# ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║███████║██║  ██║╚██████╔╝   ██║   
+# ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   
+
+
+DIR="$HOME/.config/rofi/themes/"
+
+# -----------------------------------------------------
+# Screenshot Directory
+# -----------------------------------------------------
+images_dir="`xdg-user-dir PICTURES`/screenshots"
+
+if [[ ! -d "$images_dir" ]]; then
+	mkdir -p "$images_dir"
+fi
+
+# -----------------------------------------------------
+# Theme Elements
+# -----------------------------------------------------
+prompt='Screenshot'
+mesg="DIR: $images_dir"
+
+# -----------------------------------------------------
+# Options
+# -----------------------------------------------------
+option_1="󰍹"
+option_2="󰩭"
+option_3=""
+option_4=""
+option_5="󱉦"
+
+# -----------------------------------------------------
+# Rofi CMD
+# -----------------------------------------------------
+rofi_cmd() {
+	rofi -theme-str "window {width: 670px;}" \
+		-theme-str "listview {columns: 5; lines: 1;}" \
+		-theme-str 'textbox-prompt-colon {str: " ";}' \
+		-dmenu \
+		-p "$prompt" \
+		-mesg "$mesg" \
+		-markup-rows \
+		-theme $DIR/applet.rasi
+}
+
+# -----------------------------------------------------
+# Pass variables to rofi dmenu
+# -----------------------------------------------------
+run_rofi() {
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
+}
+
+# -----------------------------------------------------
+# Execute Command
+# -----------------------------------------------------
+run_cmd() {
+	if [[ "$1" == '--opt1' ]]; then 
+    # Screenshot Monitor
+		hyprshot -m monitor
+	elif [[ "$1" == '--opt2' ]]; then 
+		# Screenshot Region
+    hyprshot -m region
+	elif [[ "$1" == '--opt3' ]]; then
+    # Screenshot current Window
+		hyprshot -cm window
+	elif [[ "$1" == '--opt4' ]]; then
+    # Screenshot selected Window
+		hyprshot -m window
+	elif [[ "$1" == '--opt5' ]]; then
+    # Screenshot Region but only copy to clipboard
+		hyprshot -m region --clipboard-only
+	fi
+}
+
+# -----------------------------------------------------
+# Actions
+# -----------------------------------------------------
+chosen="$(run_rofi)"
+case ${chosen} in
+    $option_1)
+		run_cmd --opt1
+        ;;
+    $option_2)
+		run_cmd --opt2
+        ;;
+    $option_3)
+		run_cmd --opt3
+        ;;
+    $option_4)
+		run_cmd --opt4
+        ;;
+    $option_5)
+		run_cmd --opt5
+        ;;
+esac
+

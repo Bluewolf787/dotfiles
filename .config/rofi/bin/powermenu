@@ -10,31 +10,41 @@
 
 DIR="$HOME/.config/rofi/themes"
 
+# -----------------------------------------------------
 # CMDs
+# -----------------------------------------------------
 lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
 uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
+# -----------------------------------------------------
 # Options
+# -----------------------------------------------------
 shutdown="󰐥"
 reboot="󰜉"
 lock="󰍁"
 suspend=""
 logout="󰍃"
-yes=""
-no=""
+yes="󰬠"
+no="󰬕"
 
+# -----------------------------------------------------
 # Rofi CMD
+# -----------------------------------------------------
 rofi_cmd() {
-	rofi -dmenu \
+	rofi -theme-str "window {width: 670px;}" \
+    -theme-str "listview {columns: 5; lines: 1;}" \
+    -dmenu \
 		-p " $USER" \
 		-mesg "󰍹 Last Login: $lastlogin |  Uptime: $uptime" \
 		-theme ${DIR}/powermenu.rasi
 }
 
+# -----------------------------------------------------
 # Confirmation CMD
+# -----------------------------------------------------
 confirm_cmd() {
-	rofi -theme-str "window {location: center; anchor: center; fullscreen: false; width: 350px; padding: 15px;}" \
+	rofi -theme-str "window {location: center; anchor: center; fullscreen: false; width: 320px; padding: 15px;}" \
 		-theme-str "mainbox {children: [ "message", "listview" ];}" \
 		-theme-str "listview {columns: 2; lines: 1;}" \
 		-theme-str "element-text {horizontal-align: 0.425;}" \
@@ -45,17 +55,23 @@ confirm_cmd() {
 		-theme ${DIR}/powermenu.rasi
 }
 
+# -----------------------------------------------------
 # Ask for confirmation
+# -----------------------------------------------------
 confirm_exit() {
 	echo -e "$yes\n$no" | confirm_cmd
 }
 
+# -----------------------------------------------------
 # Pass variables to rofi dmenu
+# -----------------------------------------------------
 run_rofi() {
 	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
+# -----------------------------------------------------
 # Execute Command
+# -----------------------------------------------------
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
@@ -75,7 +91,9 @@ run_cmd() {
 	fi
 }
 
+# -----------------------------------------------------
 # Actions
+# -----------------------------------------------------
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)

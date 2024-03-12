@@ -1,0 +1,135 @@
+#! /usr/bin/env bash
+
+# ███████╗ ██████╗ ██╗   ██╗███╗   ██╗██████╗ 
+# ██╔════╝██╔═══██╗██║   ██║████╗  ██║██╔══██╗
+# ███████╗██║   ██║██║   ██║██╔██╗ ██║██║  ██║
+# ╚════██║██║   ██║██║   ██║██║╚██╗██║██║  ██║
+# ███████║╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝
+# ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝ 
+
+
+DIR="$HOME/.config/rofi/themes/"
+
+# -----------------------------------------------------
+# Volume Info
+# -----------------------------------------------------
+mixer="`pactl info | grep 'Server Name' | cut -b14-23`"
+speaker="`pactl get-sink-volume @DEFAULT_SINK@ | grep 'Volume' | cut -d'/' -f2 | tr -d \',' '`"
+mic="`pactl get-source-volume @DEFAULT_SOURCE@ | grep 'Volume' | cut -d'/' -f2 | tr -d \',' '`"
+
+active=""
+urgent=""
+
+# -----------------------------------------------------
+# Speaker Info
+# -----------------------------------------------------
+pactl get-sink-mute @DEFAULT_SINK@ | grep 'no' &>/dev/null
+if [[ "$?" == 0 ]]; then
+	active="-a 1"
+	stext='Unmute'
+	sicon='󰕾'
+else
+	urgent="-u 1"
+	stext='Mute'
+	sicon='󰖁'
+fi
+
+# -----------------------------------------------------
+# Microphone Info
+# -----------------------------------------------------
+pactl get-source-mute @DEFAULT_SOURCE@ | grep 'no' &>/dev/null
+if [[ "$?" == 0 ]]; then
+    [ -n "$active" ] && active+=",4" || active="-a 4"
+	mtext='Unmute'
+	micon='󰍬'
+else
+    [ -n "$urgent" ] && urgent+=",4" || urgent="-u 4"
+	mtext='Mute'
+	micon='󰍭'
+fi
+
+# -----------------------------------------------------
+# Theme Elements
+# -----------------------------------------------------
+prompt="S:$stext, M:$mtext"
+mesg="$mixer - Speaker: $speaker, Mic: $mic"
+
+option_1="󰝝"
+option_2="$sicon"
+option_3="󰝞"
+option_4="󰢴"
+option_5="$micon"
+option_6="󰢳"
+option_7="󰓃"
+
+# -----------------------------------------------------
+# Rofi CMD
+# -----------------------------------------------------
+rofi_cmd() {
+	rofi -theme-str "window {width: 860;}" \
+		-theme-str "listview {columns: 7; lines: 1;}" \
+		-theme-str 'textbox-prompt-colon {str: "";}' \
+		-dmenu \
+		-p "$prompt" \
+		-mesg "$mesg" \
+		${active} ${urgent} \
+		-markup-rows \
+		-theme $DIR/applet.rasi
+}
+
+# -----------------------------------------------------
+# Pass variables to rofi dmenu
+# -----------------------------------------------------
+run_rofi() {
+	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7" | rofi_cmd
+}
+
+# -----------------------------------------------------
+# Execute Command
+# -----------------------------------------------------
+run_cmd() {
+	if [[ "$1" == '--opt1' ]]; then
+		pactl set-sink-volume @DEFAULT_SINK@ +5%
+	elif [[ "$1" == '--opt2' ]]; then
+		pactl set-sink-mute @DEFAULT_SINK@ toggle
+	elif [[ "$1" == '--opt3' ]]; then
+		pactl set-sink-volume @DEFAULT_SINK@ -5%
+  elif [[ "$1" == '--opt4' ]]; then
+    pactl set-source-volume @DEFAULT_SOURCE@ +5%
+	elif [[ "$1" == '--opt5' ]]; then
+		pactl set-source-mute @DEFAULT_SOURCE@ toggle
+  elif [[ "$1" == '--opt6' ]]; then
+    pactl set-source-volume @DEFAULT_SOURCE@ -5%
+	elif [[ "$1" == '--opt7' ]]; then
+		pavucontrol
+	fi
+}
+
+# -----------------------------------------------------
+# Actions
+# -----------------------------------------------------
+chosen="$(run_rofi)"
+case ${chosen} in
+    $option_1)
+		run_cmd --opt1
+        ;;
+    $option_2)
+		run_cmd --opt2
+        ;;
+    $option_3)
+		run_cmd --opt3
+        ;;
+    $option_4)
+		run_cmd --opt4
+        ;;
+    $option_5)
+    run_cmd --opt5
+        ;;
+    $option_6)
+    run_cmd --opt6
+        ;;
+    $option_7)
+		run_cmd --opt7
+        ;;
+esac
+
