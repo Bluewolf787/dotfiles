@@ -18,8 +18,13 @@
   "gtk-layer-shell": true,
   "height": 44,
   "modules-left": ["custom/launcher", "hyprland/workspaces", "cpu", "memory", "disk", "tray", "hyprland/window"],
-  "modules-center": ["mpris"],
+  "modules-center": [],
   "modules-right": ["custom/pacman", "network", "bluetooth", "pulseaudio","pulseaudio#microphone", "backlight", "battery", "clock"],
+  
+
+  // -----------------------------------------------------
+  // Window
+  // -----------------------------------------------------
   "hyprland/window": {
     "format": "{}"
   },
@@ -38,7 +43,7 @@
   // -----------------------------------------------------
   "custom/launcher": {
     "format": "󰣇",
-    "on-click": "~/.config/hypr/rofi/bin/launcher"
+    "on-click": "~/.config/rofi/bin/launcher"
   },
 
   // -----------------------------------------------------
@@ -54,7 +59,7 @@
   // -----------------------------------------------------
   "cpu": {
     "interval": 1,
-    "format": "  {}%"
+    "format": " {}%"
   },
 
   // -----------------------------------------------------
@@ -62,7 +67,7 @@
   // -----------------------------------------------------
   "memory": {
     "interval": 1,
-    "format": "  {}%"
+    "format": " {}%"
   },
 
   // -----------------------------------------------------
@@ -78,7 +83,6 @@
   // -----------------------------------------------------
   "clock": {
     "format": "{:%e %b, %H:%M %p }",
-    "format-alt":"{:%a, %b %e}",
     "timezone": "Europe/Berlin",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
@@ -118,11 +122,10 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "tooltip": false,
-    "format-muted": "󰸈 Muted",
-    "on-click": "pamixer -t",
-    "on-right-click": "exec pavucontrol",
-    "on-scroll-up": "pamixer -i 5",
-    "on-scroll-down": "pamixer -d 5",
+    "format-muted": "󰸈 {volume}%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -141,10 +144,10 @@
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
-    "format-source-muted": " Muted",
-    "on-click": "pamixer --default-source -t",
-    "on-scroll-up": "pamixer --default-source -i 5",
-    "on-scroll-down": "pamixer --default-source -d 5",
+    "format-source-muted": " {volume}%",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
     "scroll-step": 5
   },
     
@@ -152,8 +155,7 @@
   // Network
   // -----------------------------------------------------
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "󰤨  {essid}",
+    "format-wifi": "󰤨 {essid}",
     "format-ethernet": "󰈀 {ipaddr}/{cidr}",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}, {signalStrength}%",
     "format-linked": "󰈀 {ifname} (No IP)",
@@ -165,59 +167,14 @@
   // Bluetooth
   // -----------------------------------------------------
   "bluetooth": {
-	  "format": "",// " {status}",
-	  "format-disabled": "", // "󰂲", // an empty format will hide the module
-	  "format-connected": "",
-	  "tooltip-format": "{device_alias}",
-	  "tooltip-format-connected": " {device_enumerate}",
-	  "tooltip-format-enumerate-connected": "{device_alias}"
-  },
-
-  // -----------------------------------------------------
-  // Mpris
-  // -----------------------------------------------------
-  "mpris": {
-    "title-len": 40,
-    "interval":1,
-    "album-len":0,
-    "max-len": 60,
-    "format": "{player_icon} {dynamic}",
-    "format-paused": "{player_icon} {dynamic}",
-    "player-icons": {
-      "default": "▶",
-      "mpv": "🎵",
-      "spotify": "",
-      "firefox": ""
-    },
-    "status-icons": {
-      "paused": ""
-    },
-    "ignored-players": ["vlc", "firefox"]
-  },
-     
-  // -----------------------------------------------------
-  // MPD
-  // -----------------------------------------------------
-  "mpd": {
-    "format": "{stateIcon} {artist} -  {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "{stateIcon} {artist} -  {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
-    "interval": 2,
-    "consume-icons": {
-      "on": " " // Icon shows only when "consume" is on
-    },
-    "repeat-icons": {
-      "on": " "
-    },
-    "single-icons": {
-      "on": "1 "
-    },
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)"
+	  "format": "󰂯",
+    "format-off": "󰂲",
+	  "format-disabled": "󰂲",
+	  "format-connected": "󰂱",
+    "format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥉"],
+    "tooltip-format": "{status}",
+	  "tooltip-format-connected": "{device_enumerate} {device_battery_percentage}%",
+	  "tooltip-format-enumerate-connected": "{device_alias} {device_battery_percentage}%"
   },
 
   // -----------------------------------------------------

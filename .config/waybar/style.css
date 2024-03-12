@@ -11,9 +11,8 @@
 @import 'waybar-colors.css';
 
 * {
-  /* border: none; */
   border-radius: 0px;
-  font-family: "CaskaydiaCove NF";
+  font-family: "Jetbrains Mono Nerd Font";
   font-weight: 500;
   font-size: 14px;
   min-height: 20px;
@@ -36,7 +35,6 @@ tooltip {
   padding: 5px;
   color: @workspace;
   margin-right: 5px;
-  /* margin-left: 10px; */
 }
 
 #workspaces button.active {
@@ -69,7 +67,6 @@ tooltip {
   padding: 0px 7px;
   margin-top: 5px;
   margin-bottom: 6px;
-  /* border: 1px solid #b5b0a7; */
 }
 
 #backlight {
@@ -114,6 +111,7 @@ tooltip {
   border-radius: 7px;
   margin-right: 5px;
   margin-left: 10px;
+  background: transparent;
 }
 
 #workspaces {
@@ -134,9 +132,8 @@ tooltip {
   border-radius: 7px;
   margin-left: 10px;
   margin-right: 10px;
+  padding-left: 10px;
   padding-right: 0px;
-  padding-left: 12px;
-  border-right: 0px;
 }
 
 #network {
@@ -151,17 +148,31 @@ tooltip {
   margin-right: 5px;
 }
 
+#bluetooth.on, #bluetooth.connected {
+  background: @highlight-blue;
+  color: @background;
+}
+
+#bluetooth.discoverable {
+  background: @highlight-yellow;
+  color: @background;
+}
+
+#bluetooth.discovering {
+  background: @highlight-aqua;
+  color: @background;
+}
+
+#bluetooth.pairable {
+  background: @highlight-purple;
+  color: @background;
+}
+
 #battery {
   border-radius: 7px;
   margin-right: 5px;
   margin-left: 10px;
   border-left: 0px;
-}
-
-#custom-spotify {
-  border-radius: 7px;
-  margin-right: 5px;
-  border-right: 0px;
 }
 
 #custom-launcher {
@@ -172,28 +183,8 @@ tooltip {
   padding-left: 10px;
 }
 
-#mpris {
-  border-radius: 7px;
-  margin-right: 5px;
-  border-right: 0px;
-}
-
-#mpris.paused {
-  border-bottom: 2px solid @yellow;
-}
-
-#mpd {
-  border-radius: 7px;
-  margin-right: 5px;
-  border-right: 0px;
-}
-
 #custom-pacman {
   border-radius: 7px;
   margin-right: 5px;
-}
-
-#custom-pomodoro.paused {
-  border-bottom: 2px solid @yellow;
 }
 
