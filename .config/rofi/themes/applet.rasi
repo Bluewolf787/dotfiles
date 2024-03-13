@@ -55,15 +55,15 @@ mainbox {
 /* ----------------------------------------------------- */
 inputbar {
     enabled:                     true;
-    spacing:                     0px;
+    spacing:                     50px;
     padding:                     100px 80px;
     background-color:            transparent;
     background-image:            url("~/.config/hypr/wallpapers/forest.jpg", width);
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "dummy", "prompt"];
+    children:                    ["dummy", "textbox-prompt-colon", "prompt", "dummy"];
 }
 
-dummy{
+dummy {
     background-color:            transparent;
 }
 textbox-prompt-colon {

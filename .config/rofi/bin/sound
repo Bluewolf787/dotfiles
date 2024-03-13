@@ -65,17 +65,33 @@ option_7="󰓃"
 # -----------------------------------------------------
 # Rofi CMD
 # -----------------------------------------------------
-rofi_cmd() {
-	rofi -theme-str "window {width: 860;}" \
-		-theme-str "listview {columns: 7; lines: 1;}" \
-		-theme-str 'textbox-prompt-colon {str: "";}' \
-		-dmenu \
-		-p "$prompt" \
-		-mesg "$mesg" \
-		${active} ${urgent} \
-		-markup-rows \
-		-theme $DIR/applet.rasi
-}
+if [ $# -eq 0 ]; then
+  rofi_cmd() {
+	  rofi -theme-str "window {width: 860;}" \
+		  -theme-str "listview {columns: 7; lines: 1;}" \
+		  -theme-str 'textbox-prompt-colon {str: "";}' \
+		  -dmenu \
+		  -p "$prompt" \
+		  -mesg "$mesg" \
+		  ${active} ${urgent} \
+		  -markup-rows \
+		  -theme $DIR/applet.rasi
+  }
+else
+  argv=("$@")
+  rofi_cmd() {
+    rofi -theme-str "window {width: 860;}" \
+      -theme-str "listview {columns: 7; lines: 1;}" \
+      -theme-str 'textbox-prompt-colon {str: "󰕾";}' \
+      -dmenu \
+      -selected-row ${argv} \
+      -p "$prompt" \
+      -mesg "$mesg" \
+      ${active} ${urgent} \
+      -markup-rows \
+      -theme $DIR/applet.rasi
+  }
+fi
 
 # -----------------------------------------------------
 # Pass variables to rofi dmenu
@@ -112,21 +128,25 @@ chosen="$(run_rofi)"
 case ${chosen} in
     $option_1)
 		run_cmd --opt1
+    /bin/bash $HOME/.config/rofi/bin/sound
         ;;
     $option_2)
 		run_cmd --opt2
         ;;
     $option_3)
 		run_cmd --opt3
+    /bin/bash $HOME/.config/rofi/bin/sound 2
         ;;
     $option_4)
 		run_cmd --opt4
+    /bin/bash $HOME/.config/rofi/bin/sound 3
         ;;
     $option_5)
     run_cmd --opt5
         ;;
     $option_6)
     run_cmd --opt6
+    /bin/bash $HOME/.config/rofi/bin/sound 5
         ;;
     $option_7)
 		run_cmd --opt7
