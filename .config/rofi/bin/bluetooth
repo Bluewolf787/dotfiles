@@ -1,0 +1,156 @@
+#! /usr/bin/env bash
+
+# ██████╗ ██╗     ██╗   ██╗███████╗████████╗ ██████╗  ██████╗ ████████╗██╗  ██╗
+# ██╔══██╗██║     ██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗╚══██╔══╝██║  ██║
+# ██████╔╝██║     ██║   ██║█████╗     ██║   ██║   ██║██║   ██║   ██║   ███████║
+# ██╔══██╗██║     ██║   ██║██╔══╝     ██║   ██║   ██║██║   ██║   ██║   ██╔══██║
+# ██████╔╝███████╗╚██████╔╝███████╗   ██║   ╚██████╔╝╚██████╔╝   ██║   ██║  ██║
+# ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝
+
+
+THEME_DIR="$HOME/.config/rofi/themes/"
+
+device_name="`bluetoothctl show | grep 'Name' | cut -d':' -f2 | tr -d ' '`"
+
+active=""
+urgent=""
+
+# Power Info
+bluetoothctl show | grep 'Powered: no' &>/dev/null
+if [[ "$?" == 0 ]]; then
+  power_text="OFF"
+  power_icon="󰂲"
+else
+  power_text="ON"
+  power_icon="󰂯"
+fi
+
+# Connected Info
+bluetoothctl devices Connected | grep 'Device' &>/dev/null 
+if [[ "$?" == 0 ]]; then
+  connected_text="`bluetoothctl devices Connected | cut -d' ' -f3`"
+  connected_icon="󰂱"
+else
+  connected_text="None"
+  connected_icon="󰂱"
+fi
+
+# Pairabel Info
+bluetoothctl show | grep 'Pairable: no' &>/dev/null
+if [[ "$?" == 0 ]]; then
+  pairable_text="NO"
+  pairable_icon="󰂰"
+else
+  pairable_text="YES"
+  pairable_icon="󰂰"
+fi
+
+# Discoverable Info
+bluetoothctl show | grep 'Discoverable: no' &>/dev/null
+if [[ "$?" == 0 ]]; then
+  discoverable_text="NO"
+  discoverable_icon="󰂳"
+else
+  discoverable_text="YES"
+  discoverable_icon="󰂳"
+fi
+
+# Theme Elements
+prompt="Bluetooth - $device_name"
+mesg="Power: $power_text - Connected: $connected_text - Pairable: $pairable_text - Discoverable: $discoverable_text"
+
+option_1="$power_icon"
+option_2="$connected_icon"
+option_3="$pairable_icon"
+option_4="$discoverable_icon"
+option_5=""
+
+# Rofi CMD
+rofi_cmd() {
+  rofi -theme-str "window {width: 670px;}" \
+    -theme-str "listview {columns: 5; lines: 1;}" \
+    -theme-str 'textbox-prompt-colon {str: "";}' \
+    -dmenu \
+    -p "$prompt" \
+    -mesg "$mesg" \
+    ${active} ${urgent} \
+    -markup-rows \
+    -theme $THEME_DIR/applet.rasi
+}
+
+# Pass variables to rofi menu
+run_rofi() {
+  echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
+}
+
+# Execute Command
+toggle_power() {
+  bluetoothctl show | grep 'Powered: no' &>/dev/null
+  if [[ "$?" == 0 ]]; then
+    bluetoothctl power on
+  else
+    bluetoothctl power off
+  fi
+}
+
+toggle_connect() {
+  bluetoothctl device Connected | grep 'Device' &>/dev/null
+  if [[ "$?" == 0 ]]; then
+    bluetoothctl disconnect
+  else
+    bluetoothctl connect 14:3F:A6:A7:D9:81
+  fi
+}
+
+toggle_pairable() {
+  bluetoothctl show | grep 'Pairable: no' &>/dev/null
+  if [[ "$?" == 0 ]]; then
+    bluetoothctl pairable on
+  else
+    bluetoothctl pairable off
+  fi
+}
+
+toggle_discoverable() {
+  bluetoothctl show | grep 'Discoverable: no' &>/dev/null
+  if [[ "$?" == 0 ]]; then
+    bluetoothctl discoverable on
+  else
+    bluetoothctl discoverable off
+  fi
+}
+
+run_cmd() {
+  if [[ "$1" == '--opt1' ]]; then
+    toggle_power
+  elif [[ "$1" == '--opt2' ]]; then
+    toggle_connect
+  elif [[ "$1" == '--opt3' ]]; then
+    toggle_pairable
+  elif [[ "$1" == '--opt4' ]]; then
+    toggle_discoverable
+  elif [[ "$1" == '--opt5' ]]; then
+    kitty --single-instance --class "kitty_float" bluetoothctl
+  fi
+}
+
+# Actions
+choosen="$(run_rofi)"
+case ${choosen} in
+  $option_1)
+    run_cmd --opt1
+    ;;
+  $option_2)
+    run_cmd --opt2
+    ;;
+  $option_3)
+    run_cmd --opt3
+    ;;
+  $option_4)
+    run_cmd --opt4
+    ;;
+  $option_5)
+    run_cmd --opt5
+    ;;
+esac
+

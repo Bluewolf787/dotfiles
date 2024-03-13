@@ -43,7 +43,8 @@
   // -----------------------------------------------------
   "custom/launcher": {
     "format": "󰣇",
-    "on-click": "~/.config/rofi/bin/launcher"
+    "on-click": "~/.config/rofi/bin/launcher",
+    "on-click-right": "~/.config/rofi/bin/powermenu"
   },
 
   // -----------------------------------------------------
@@ -105,9 +106,8 @@
   "battery": {
     "interval": 10,
     "states": {
-      "good": 95,
       "warning": 30,
-      "critical": 20
+      "critical": 15
     },
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",

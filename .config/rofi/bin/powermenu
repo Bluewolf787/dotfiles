@@ -8,7 +8,7 @@
 # ╚═╝      ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ 
 
 
-DIR="$HOME/.config/rofi/themes"
+THEME_DIR="$HOME/.config/rofi/themes"
 
 # -----------------------------------------------------
 # CMDs
@@ -37,7 +37,7 @@ rofi_cmd() {
     -dmenu \
 		-p " $USER" \
 		-mesg "󰍹 Last Login: $lastlogin |  Uptime: $uptime" \
-		-theme ${DIR}/powermenu.rasi
+		-theme $THEME_DIR/powermenu.rasi
 }
 
 # -----------------------------------------------------

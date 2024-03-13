@@ -8,9 +8,9 @@
 # ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 
 
-DIR="$HOME/.config/rofi/themes/"
+THEME_DIR="$HOME/.config/rofi/themes/"
 
 rofi \
   -show drun \
-  -theme $DIR/launcher.rasi
+  -theme $THEME_DIR/launcher.rasi
 

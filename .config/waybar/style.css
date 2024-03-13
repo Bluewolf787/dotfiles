@@ -175,6 +175,26 @@ tooltip {
   border-left: 0px;
 }
 
+#battery.plugged {
+  background: @active;
+  color: @background;
+}
+
+#battery.charging {
+  background: @highlight-yellow;
+  color: @background;
+}
+
+#battery.warning {
+  background: @highlight-orange;
+  color: @background;
+}
+
+#battery.critical {
+  background: @urgent;
+  color: @background;
+}
+
 #custom-launcher {
   border-radius: 7px;
   margin-left: 10px;

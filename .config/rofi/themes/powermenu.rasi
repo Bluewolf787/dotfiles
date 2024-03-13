@@ -55,7 +55,7 @@ mainbox {
 /* ----------------------------------------------------- */
 inputbar {
     enabled:                     true;
-    spacing:                     50px;
+    spacing:                     25px;
     padding:                     100px 80px;
     background-color:            transparent;
     background-image:            url("~/.config/hypr/wallpapers/forest.jpg", width);
