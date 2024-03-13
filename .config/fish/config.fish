@@ -40,6 +40,8 @@ alias autoclean "sudo pacman -Sc"
 
 alias nitch "~/.config/nitch/nitch"
 
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 # -----------------------------------------------------
 # Fishmarks
 # -----------------------------------------------------
