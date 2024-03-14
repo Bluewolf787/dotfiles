@@ -15,7 +15,9 @@ device_name="`bluetoothctl show | grep 'Name' | cut -d':' -f2 | tr -d ' '`"
 active=""
 urgent=""
 
+# -----------------------------------------------------
 # Power Info
+# -----------------------------------------------------
 bluetoothctl show | grep 'Powered: no' &>/dev/null
 if [[ "$?" == 0 ]]; then
   power_text="OFF"
@@ -25,7 +27,9 @@ else
   power_icon="󰂯"
 fi
 
+# -----------------------------------------------------
 # Connected Info
+# -----------------------------------------------------
 bluetoothctl devices Connected | grep 'Device' &>/dev/null 
 if [[ "$?" == 0 ]]; then
   connected_text="`bluetoothctl devices Connected | cut -d' ' -f3`"
@@ -35,7 +39,9 @@ else
   connected_icon="󰂱"
 fi
 
+# -----------------------------------------------------
 # Pairabel Info
+# -----------------------------------------------------
 bluetoothctl show | grep 'Pairable: no' &>/dev/null
 if [[ "$?" == 0 ]]; then
   pairable_text="NO"
@@ -45,7 +51,9 @@ else
   pairable_icon="󰂰"
 fi
 
+# -----------------------------------------------------
 # Discoverable Info
+# -----------------------------------------------------
 bluetoothctl show | grep 'Discoverable: no' &>/dev/null
 if [[ "$?" == 0 ]]; then
   discoverable_text="NO"
@@ -55,7 +63,9 @@ else
   discoverable_icon="󰂳"
 fi
 
+# -----------------------------------------------------
 # Theme Elements
+# -----------------------------------------------------
 prompt="Bluetooth - $device_name"
 mesg="Power: $power_text - Connected: $connected_text - Pairable: $pairable_text - Discoverable: $discoverable_text"
 
@@ -65,7 +75,9 @@ option_3="$pairable_icon"
 option_4="$discoverable_icon"
 option_5=""
 
+# -----------------------------------------------------
 # Rofi CMD
+# -----------------------------------------------------
 rofi_cmd() {
   rofi -theme-str "window {width: 670px;}" \
     -theme-str "listview {columns: 5; lines: 1;}" \
@@ -78,12 +90,16 @@ rofi_cmd() {
     -theme $THEME_DIR/applet.rasi
 }
 
+# -----------------------------------------------------
 # Pass variables to rofi menu
+# -----------------------------------------------------
 run_rofi() {
   echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
 }
 
+# -----------------------------------------------------
 # Execute Command
+# -----------------------------------------------------
 toggle_power() {
   bluetoothctl show | grep 'Powered: no' &>/dev/null
   if [[ "$?" == 0 ]]; then
@@ -134,7 +150,9 @@ run_cmd() {
   fi
 }
 
+# -----------------------------------------------------
 # Actions
+# -----------------------------------------------------
 choosen="$(run_rofi)"
 case ${choosen} in
   $option_1)

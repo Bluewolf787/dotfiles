@@ -13,10 +13,10 @@ configuration {
 	modi:                       "drun,filebrowser,window";
     show-icons:                 true;
     icon-theme:                 "Papirus";
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    display-drun:               " Apps";
+    display-run:                " Run";
+    display-filebrowser:        " Filebrowser";
+    display-window:             " Windows";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -51,7 +51,7 @@ mainbox {
     spacing:                     0px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "inputbar", "listbox" ];
+    children:                    [ "inputbar", "mode-switcher", "listbox" ];
 }
 
 listbox {
@@ -73,7 +73,7 @@ inputbar {
     background-image:            url("~/.config/hypr/wallpapers/forest.jpg", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
-    children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+    children:                    [ "dummy", "textbox-prompt-colon", "entry", "dummy" ];
 }
 textbox-prompt-colon {
     enabled:                     true;
@@ -109,6 +109,7 @@ dummy {
 mode-switcher{
     enabled:                     true;
     spacing:                     10px;
+    padding:                     10px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
