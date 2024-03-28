@@ -35,8 +35,8 @@ alias clock "tty-clock -c -C 2"
 alias note "nvim ~/Dokumente/notes.txt"
 
 alias update "sudo pacman -Syu && yay -Syu"
-alias autoremove "sudo pacman -Qdtq | sudo pacman -Rs -"
-alias autoclean "sudo pacman -Sc"
+alias autoremove "sudo pacman -Qdtq | sudo pacman -Rs - && yay -Qdtq | yay -Rs -"
+alias autoclean "sudo pacman -Sc && yay -Sc"
 
 alias nitch "~/.config/nitch/nitch"
 
