@@ -183,7 +183,7 @@
   "custom/pacman": {
     "format": " {}",
     "interval": 60,
-    "exec": "checkupdates | wc -l",
+    "exec": "checkupdate| jq -r '.text'",
     "on-click": "~/.local/scripts/terminal --update; pkill -SIGRTMIN+8 waybar",
     "signal": 8
   }

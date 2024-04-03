@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output="$(checkupdates)"
+output="$(pacman -Qu)"
 number="$(echo "$output" | wc -l)"
 
 if (( $number > 30 ))
