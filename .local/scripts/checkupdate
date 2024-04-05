@@ -1,9 +1,15 @@
 #!/bin/bash
 
 output="$(pacman -Qu)"
-number="$(echo "$output" | wc -l)"
 
-if (( $number > 30 ))
+if [[ "$output" == "" ]];
+then
+    number="0"
+else
+    number="$(echo "$output" | wc -l)"
+fi
+
+if [[ $number > 30 ]];
 then
     tooltip="$(echo "$output" | head -n 20 | sed -z 's/\n/\\n/g')"
     tooltip+='...'
