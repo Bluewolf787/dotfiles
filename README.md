@@ -37,6 +37,14 @@
 ---
 
 ## Preview
+| ![overall-preview](preview/overall.png) | ![floating-nvim-preview](preview/floating-nvim.png) |
+| --- | --- |
+| ![browser-startpage-preview](preview/browser-startpage.png) | ![hyprlock-preview](preview/hyprlock.png) |
+
+| ![app-launcher-preview](preview/app-launcher.png) | ![power-menu-preview](preview/power-menu.png) |
+| --- | --- |
+| ![bluetooth-menu-preview](preview/bluetooth-menu.png) | ![sound-menu-preview](preview/sound-menu.png) |
+| ![screenshot-menu-preview](preview/screenshot-menu.png) | ![quicklinks-menu-preview](preview/quicklinks-menu.png) |
 
 ## Installation
 Clone Repository and give execution rights:
@@ -136,7 +144,7 @@ Install only dotfiles:
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 Usage:
-```
+```console
 git lg
 git lg -2 -p       # last two commit with line changes
 ```
@@ -188,7 +196,7 @@ Download and extract the zip-archive then copy the files as shown below
 <pre>
 cd FPC_driver_linux_27.26.23.39/install_fpc
 sudo cp ./libfpcbep.so /usr/lib/
-
+<br>
 cd FPC_driver_linux_libfprint/install_libfprint/
 sudo cp lib/udev/rules.d/60-libfprint-2-device-fpc.rules /lib/
 sudo cp usr/lib/x86_64-linux-gnu/* /usr/lib/
@@ -203,7 +211,7 @@ chmod +x install.sh
 ```
 
 Set up for hyprlock `/etc/pam.d/hyprlock`
-```console
+```
 # PAM configuration file for hyprlock
 # the 'login' configuration file (see /etc/pam.d/login)
 
@@ -212,7 +220,7 @@ auth        include     login
 ```
 
 Set up for ly `/etc/pam.d/ly`
-```console
+```
 #%PAM-1.0
 
 auth 	   sufficient   pam_unix.so try_first_pass likeauth nullok

@@ -61,7 +61,7 @@ run_rofi() {
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then 
     # Screenshot Monitor
-		hyprshot -m monitor -o ~/Pictures/screenshots/
+		hyprshot -m output -o ~/Pictures/screenshots/
 	elif [[ "$1" == '--opt2' ]]; then 
 		# Screenshot Region
     hyprshot -m region -o ~/Pictures/screenshots/
