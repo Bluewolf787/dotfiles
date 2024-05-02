@@ -157,6 +157,9 @@ alias bc "bluetoothctl connect 14:3F:A6:A7:D9:81"
 alias be "systemctl enable bluetooth"
 alias bd "systemctl disable bluetooth"
 
+alias jdk22 "sudo archlinux-java set java-22-openjdk"
+alias jdk17 "sudo archlinux-java set java-17-openjdk"
+
 # -----------------------------------------------------
 # Fishmarks
 # -----------------------------------------------------
