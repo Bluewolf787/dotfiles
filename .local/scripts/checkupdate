@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output="$(pacman -Qu)"
+output="$(pacman -Qu ; yay -Qu)"
 
 if [[ "$output" == "" ]];
 then
