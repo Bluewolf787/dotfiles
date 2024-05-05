@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output="$(pacman -Qu ; yay -Qu)"
+output="$(checkupdates)"
 
 if [[ "$output" == "" ]];
 then

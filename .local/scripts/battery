@@ -1,0 +1,52 @@
+#!/bin/bash
+
+capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+status="$(cat /sys/class/power_supply/BAT0/status)"
+
+symbol="󰁹"
+case $capacity in
+    ([0-9])
+        symbol="󰂎"
+        ;;
+    ([1-1][1-9])
+        symbol="󰁺"
+        ;;
+    ([2-2][0-9])
+        symbol="󰁻"
+        ;;
+    ([3-3][0-9])
+        symbol="󰁼"
+        ;;
+    ([4-4][0-9])
+        symbol="󰁽"
+        ;;
+    ([5-5][0-9])
+        symbol="󰁾"
+        ;;
+    ([6-6][0-9])
+        symbol="󰁿"
+        ;;
+    ([7-7][0-9])
+        symbol="󰂀"
+        ;;
+    ([8-8][0-9])
+        symbol="󰂁"
+        ;;
+    ([9-9][0-9])
+        symbol="󰂂"
+        ;;
+esac
+
+case $status in
+    "Plugged")
+        symbol="󰚥"
+        ;;
+    "Charging")
+        symbol="󰂄"
+        ;;
+    "Critical")
+        symbol="󰂃"
+        ;;
+esac
+
+echo "$symbol $capacity%"
