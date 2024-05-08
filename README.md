@@ -7,12 +7,6 @@
 ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
 ```
 
-## TODO
-- [ ] README
-- [ ] rofi network menu
-- [ ] configure ranger
-- [ ] configure zathura
-
 ---
 1. [Preview](#preview)
 2. [Installation](#installation)
@@ -33,7 +27,6 @@
     1. [Git](#git)
     2. [Bluetooth](#bluetooth)
     3. [fprintd](#fprintd)
-5. [File Tree](#file-tree)
 ---
 
 ## Preview
@@ -84,7 +77,7 @@ Install only dotfiles:
 - [ly](https://archlinux.org/packages/extra/x86_64/ly/) | https://github.com/fairyglade/ly
 - [brightnessctl](https://archlinux.org/packages/extra/x86_64/brightnessctl/) | https://github.com/Hummer12007/brightnessctl
 - [polkit-kde-agent](https://archlinux.org/packages/extra/x86_64/polkit-kde-agent/) | https://kde.org/plasma-desktop/
-
+- [pacman-contrib](https://archlinux.org/packages/extra/x86_64/pacman-contrib/) | https://gitlab.archlinux.org/pacman/pacman-contrib
 
 ### Drivers
 ###### Sound:
@@ -113,6 +106,7 @@ Install only dotfiles:
 - [bat](https://archlinux.org/packages/extra/x86_64/bat/) | https://github.com/sharkdp/bat
 - [eza](https://archlinux.org/packages/extra/x86_64/eza/) | https://github.com/eza-community/eza
 - [docker](https://archlinux.org/packages/extra/x86_64/docker/) | https://www.docker.com/
+- [nmap](https://archlinux.org/packages/extra/x86_64/nmap/) | https://nmap.org/
 
 ###### Graphical
 - [polkit-kde-agent](https://archlinux.org/packages/extra/x86_64/polkit-kde-agent/) | https://kde.org/plasma-desktop/
@@ -125,6 +119,12 @@ Install only dotfiles:
 - [docker-desktop](https://aur.archlinux.org/packages/docker-desktop)<sup>AUR</sup> | https://www.docker.com/products/docker-desktop/
 - [virtualbox-host-modules-arch](https://archlinux.org/packages/extra/x86_64/virtualbox-host-modules-arch/) | https://virtualbox.org/
 - [virtualbox](https://archlinux.org/packages/extra/x86_64/virtualbox/) | https://virtualbox.org/
+- [jetbrains-toolbox](https://aur.archlinux.org/packages/jetbrains-toolbox)<sup>AUR</sup> | https://www.jetbrains.com/toolbox-app/
+
+### Programming
+- [jdk-openjdk](https://archlinux.org/packages/extra/x86_64/jdk-openjdk/) | https://openjdk.org/
+- [jdk17-openjdk](https://archlinux.org/packages/extra/x86_64/jdk17-openjdk/) | https://openjdk.org/
+- [dart](https://archlinux.org/packages/extra/x86_64/dart/) | https://dart.dev
 
 ### Fonts
 - [nerd-fonts](https://archlinux.org/packages/?sort=&q=nerd+fonts&maintainer=&flagged=) | https://www.nerdfonts.com/
@@ -136,6 +136,12 @@ Install only dotfiles:
 
 #### NvChad
 [NvChad](https://nvchad.com/) is a Neovim config by [siduck](https://github.com/siduck).
+
+#### Flutter
+[Flutter](https://flutter.dev) is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.
+
+#### Fishmarks
+[Fishmarks](https://github.com/techwizrd/fishmarks) is a clone of [bashmarks](https://github.com/huyng/bashmarks) for the Fish shell by [techwizrd](https://github.com/techwizrd)
 
 ## Configuration
 ### Git
@@ -231,168 +237,15 @@ password   include      login
 session    include      login
 ```
 
-## File Tree
-<details><summary>:open_file_folder: .dotfiles</summary>
-    <br>
-    <details><summary>:open_file_folder: .config/</summary>
-        <br>
-        <details><summary>:open_file_folder: bat/</summary>
-            <br>
-            <details><summary>:open_file_folder: themes/</summary>
-                <br>
-                :page_facing_up: Everforest-Dark.tmTheme
-            </details>
-            <br>
-            :page_facing_up: config
-        </details>
-        <details><summary>:open_file_folder: brave/</summary>
-            <br>
-            <details><summary>:open_file_folder: icons</summary>
-                <br>
-                :sunrise: favicon.png
-            </details>
-            <br>
-            :page_facing_up: index.html
-            :page_facing_up: JetBrainsMonoNerdFont.ttf
-            :page_facing_up: style.css
-            :page_facing_up: time.js
-        </details>
-        <details><summary>:open_file_folder: btop/</summary>
-            <br>
-            <details><summary>:open_file_folder: themes/</summary>
-                <br>
-                :page_facing_up: purple.theme
-            </details>
-            <br>
-            :page_facing_up: btop.conf
-        </details>
-        <details><summary>:open_file_folder: dunst/</summary>
-            <br>
-            :page_facing_up: dunstrc
-        </details>
-        <details><summary>:open_file_folder: fish/</summary>
-            <br>
-            :page_facing_up: config.fish
-        </details>
-        <details><summary>:open_file_folder: gtk-3.0/</summary>
-            <br>
-            :page_facing_up: settings.ini
-        </details>
-        <details><summary>:open_file_folder: hypr/</summary>
-            <br>
-            <details><summary>:open_file_folder: wallpapers/</summary>
-                <br>
-            </details>
-            <br>
-            :page_facing_up: execs.conf
-            :page_facing_up: hypridle.conf
-            :page_facing_up: hyprland.conf
-            :page_facing_up: hyprlock.conf
-            :page_facing_up: hyprpaper.conf
-            :page_facing_up: keybinds.conf
-            :page_facing_up: windowrules.conf
-        </details>
-        <details><summary>:open_file_folder: kitty/</summary>
-            <br>
-            :page_facing_up: kitty.conf
-        </details>
-        <details><summary>:open_file_folder: neofetch/</summary>
-            <br>
-            :page_facing_up: arch.txt
-            :page_facing_up: config.conf
-        </details>
-        <details><summary>:open_file_folder: ranger/</summary>
-            <br>
-            :page_facing_up: rc.conf
-        </details>
-        <details><summary>:open_file_folder: rofi/</summary>
-            <br>
-            <details><summary>:open_file_folder: bin/</summary>
-                <br>
-                :page_facing_up: bluetooth
-                :page_facing_up: launcher
-                :page_facing_up: powermenu
-                :page_facing_up: quicklinks
-                :page_facing_up: screenshot
-                :page_facing_up: sound
-            </details>
-            <br>
-            <details><summary>:open_file_folder: themes/</summary>
-                <br>
-                :page_facing_up: applet.rasi
-                :page_facing_up: colors.rasi
-                :page_facing_up: launcher.rasi
-                :page_facing_up: powermenu.rasi
-            </details>
-        </details>
-        <details><summary>:open_file_folder: waybar/</summary>
-            <br>
-            :page_facing_up: config.jsonc
-            :page_facing_up: style.css
-            :page_facing_up: waybar-colors.css
-        </details>
-        <details><summary>:open_file_folder: xsettingsd/</summary>
-            <br>
-            :page_facing_up: xsettingsd.conf
-        </details>
-    </details>
-    <details><summary>:open_file_folder: .icons/</summary>
-        <br>
-        <details><summary>:open_file_folder: default/</summary>
-            <br>
-            :page_facing_up: index.theme
-        </details>
-        <details><summary>:open_file_folder: Future-dark-cursors/</summary>
-            <br>
-            ...
-        </details>
-        <details><summary>:open_file_folder: Papirus</summary>
-            <br>
-            ...
-        </details>
-        <details><summary>:open_file_folder: Zafiro-Nord-Dark-Black</summary>
-            <br>
-            ...
-        </details>
-    </details>
-    <details><summary>:open_file_folder: .local/</summary>
-        <br>
-        <details><summary>:open_file_folder: scripts/</summary>
-            <br>
-            :page_facing_up: checkupdate
-            :page_facing_up: terminal
-        </details>
-    </details>
-    <details><summary>:open_file_folder: .themes/</summary>
-        <br>
-        <details><summary>:open_file_folder: Abyss-INK</summary>
-            <br>
-            ...
-        </details>
-        <details><summary>:open_file_folder: Everforest-Dark-BL-LB</summary>
-            <br>
-            ...
-        </details>
-        <details><summary>:open_file_folder: Material-Black-Plum/</summary>
-            <br>
-            ...
-        </details>
-    </details>
-    <details><summary>:open_file_folder: FPC-driver</summary>
-        <br>
-        <details><summary>:open_file_folder: FPC_driver_linux_27.26.23.39</summary>
-            <br>
-            :page_facing_up: libfpcbep.so
-        </details>
-        <details><summary>:open_file_folder: FPC_driver_linux_libfprint</summary>
-            <br>
-            :page_facing_up: 60-libfprint-2-device-fpc.rules
-            :page_facing_up: libfprint-2.so
-            :page_facing_up: libfprint-2.so.2
-            :page_facing_up: libfprint-2.so.2.0.0
-        </details>
-        <br>
-        :page_facing_up: install.sh
-    </details>
-    :page_facing_up: .gtkrc-2.0
-</details>
+### Power Button Behavior
+Edit `logind.conf` in `/etc/systemd/`. <br>
+Change line 27 and 28 from
+```
+#HandlePowerKey=poweroff
+#HandlePowerKeyLongPress=ignore
+```
+to this
+```
+HandlePowerKey=ignore
+HandlePowerKeyLongPress=poweroff
+```
