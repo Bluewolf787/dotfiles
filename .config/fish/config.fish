@@ -84,8 +84,6 @@ function _is_git_dirty
     echo (command git status -s --ignore-submodules=dirty 2>/dev/null)
 end
 
-
-
 # Functions needed for !! and !$
 function __history_previous_command
     switch (commandline -t)
@@ -121,8 +119,9 @@ end
 # -----------------------------------------------------
 alias ls "eza -F --icons --group-directories-first"
 alias la "ls -a"
-alias ll "eza -lahF --icons --group-directories-first"
+alias ll "eza -lahF --icons --group-directories-first --git"
 alias lr "eza -RF --icons --group-directories-first"
+alias lra "eza -aRF --icons --group-directories-first"
 alias lt "eza -aTF --icons --group-directories-first"
 
 alias cp "cp -iv"
