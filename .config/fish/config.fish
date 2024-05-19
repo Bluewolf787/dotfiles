@@ -9,28 +9,31 @@
 # Disable Greeting
 # -----------------------------------------------------
 set -g fish_greeting
+set -g fish_color_autosuggestion D3C6AA
+set -g fish_color_command 7FBBB3
+set -g fish_color_param D699B6
 
 function fish_prompt
     set -l last_status $status
-    set -l white (set_color -o white)
-    set -l cyan (set_color -o cyan)
-    set -l yellow (set_color -o yellow)
-    set -g red (set_color -o red)
-    set -g blue (set_color -o blue)
-    set -l green (set_color -o green)
-    set -g normal (set_color normal)
+    set -l white (set_color -o D3C6AA)
+    set -l cyan (set_color -o 83C092)
+    set -l yellow (set_color -o DBBC7F)
+    set -g red (set_color -o E67E80)
+    set -g blue (set_color -o 7FBBB3)
+    set -l green (set_color -o A7C080)
+    set -g normal (set_color D3C6AA)
 
     set -l ahead (_git_ahead)
     set -g whitespace ' '
 
     if test $last_status = 0
-        set initial_indicator "$white "
-        set status_indicator "$white❯"
+        set initial_indicator "$green "
+        set status_indicator "$green❯"
     else
         set initial_indicator "$red✖ $last_status"
-        set status_indicator "$white❯"
+        set status_indicator "$green❯"
     end
-    set -l cwd $cyan(basename (prompt_pwd))
+    set -l cwd $green(basename (prompt_pwd))
 
     if [ (_git_branch_name) ]
 
