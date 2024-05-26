@@ -66,6 +66,7 @@ Install only dotfiles:
 - [hyprpicker-git](https://aur.archlinux.org/packages/hyprpicker-git)<sup>AUR</sup> | https://github.com/hyprwm/hyprpicker
 - [xdg-desktop-portal-hyprland](https://archlinux.org/packages/extra/x86_64/xdg-desktop-portal-hyprland/) | https://github.com/hyprwm/xdg-desktop-portal-hyprland
 - [hyprshot](https://aur.archlinux.org/packages/hyprshot)<sup>AUR</sup> | https://github.com/Gustash/Hyprshot
+- [hyprwayland-scanner](https://archlinux.org/packages/extra/x86_64/hyprwayland-scanner/) | https://github.com/hyprwm/hyprwayland-scanner
 
 ### Essentials
 - [git](https://archlinux.org/packages/extra/x86_64/git/) | https://git-scm.com/
@@ -98,6 +99,7 @@ Install only dotfiles:
 ###### Other:
 - [fprintd](https://archlinux.org/packages/extra/x86_64/fprintd/) | https://fprint.freedesktop.org/
 - [libfprint](https://archlinux.org/packages/extra/x86_64/libfprint/) | https://fprint.freedesktop.org/
+- [cpio](https://archlinux.org/packages/extra/x86_64/cpio/) | https://www.gnu.org/software/cpio/
 
 ### Programs
 ###### Terminal
@@ -143,6 +145,9 @@ Install only dotfiles:
 #### Fishmarks
 [Fishmarks](https://github.com/techwizrd/fishmarks) is a clone of [bashmarks](https://github.com/huyng/bashmarks) for the Fish shell by [techwizrd](https://github.com/techwizrd)
 
+#### Hyprland Plugins
+[hyprland-plugins](https://github.com/hyprwm/hyprland-plugins) is a collection of official plugins for Hyprland. 
+
 ## Configuration
 ### Git
 **Add git log alias:**
@@ -158,6 +163,12 @@ git lg -2 -p       # last two commit with line changes
 **Add git status alias:**
 ```console
 git config --global alias.ss "status -s"
+```
+
+### Hyprland Plugins
+```bash
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprbars
 ```
 
 ### Bluetooth
