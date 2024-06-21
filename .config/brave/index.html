@@ -19,10 +19,11 @@
   <head>
     <meta charset="UTF-8">
     <title>~/startpage</title>
-    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=JetBrains Mono" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="icons/favicon.png">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src='time.js'></script>
+    <script src="time.js"></script>
+    <script src="search.js"></script>
   </head>
      
   <body>
@@ -38,6 +39,13 @@
     <div class="time">
       <div id="date"></div>
     </div>
+
+    <div class="search-box">
+      <form id="search-form" action="https://www.startpage.com/do/search" method="GET">
+        <input id="search" type="text" name="query" placeholder="Search with Startpage">
+      </form>
+    </div>
+
     <div class="cite">"A computer is like air conditioning – it becomes useless when you open Windows." Linus Torvalds</div>
     
     <div class="bookmark">

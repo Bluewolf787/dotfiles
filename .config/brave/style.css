@@ -70,7 +70,7 @@ body {
 .time {
     font-weight: 700;
     text-align: center;
-    margin: 0.5rem 0 3rem;
+    margin: 0.5rem 0 1.5rem;
     color: var(--color-fg);
     font-size: 20px;
 }
@@ -141,4 +141,26 @@ a:visited {
 
 a:hover {
     color: var(--color-link-hover);
+}
+
+#search {
+    background-color: var(--color-fg);
+    margin: 0.5rem 0 1.5rem;
+    height: 2.5rem;
+    width: 50rem;
+    border: none;
+    border-radius: 12px;
+    padding: 2px 20px;
+
+    font-family: Font, serif;
+    font-weight: 500;
+    color: var(--color-bg);
+}
+
+#search:focus {
+    outline: none;
+}
+
+#search::-webkit-search-cancel-button {
+    -webkit-appearance: none;
 }
