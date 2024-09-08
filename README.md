@@ -27,6 +27,7 @@
     1. [Git](#git)
     2. [Bluetooth](#bluetooth)
     3. [fprintd](#fprintd)
+5. [Fixes](#fixes)
 ---
 
 ## Preview
@@ -259,4 +260,15 @@ to this
 ```
 HandlePowerKey=ignore
 HandlePowerKeyLongPress=poweroff
+```
+
+## Fixes
+### Applications context menu blur
+![context-menu-blur](preview/fixes/context-menu-blur.png)
+
+Edit the `.desktop` file of the affected Application with following flags:
+```
+...
+Exec=[application] --enable-features=UseOzonePlatform --ozone-platform=wayland
+...
 ```
