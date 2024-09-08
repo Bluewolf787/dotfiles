@@ -40,7 +40,7 @@
 | ![bluetooth-menu-preview](preview/bluetooth-menu.png) | ![sound-menu-preview](preview/sound-menu.png) |
 | ![screenshot-menu-preview](preview/screenshot-menu.png) | ![quicklinks-menu-preview](preview/quicklinks-menu.png) |
 
-## Installation
+## Installation (not finished yet)
 Clone Repository and give execution rights:
 ```console
 git clone https://github.com/Bluewolf787/dotfiles.git .dotfiles
