@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output="$(checkupdates)"
+output="$(checkupdates && yay -Qua)"
 
 if [[ "$output" == "" ]];
 then
