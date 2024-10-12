@@ -168,7 +168,11 @@ alias jdk17 "sudo archlinux-java set java-17-openjdk"
 source ~/.fishmarks/marks.fish
 
 # -----------------------------------------------------
-# PATH
+# ENVIRONMENT
 # -----------------------------------------------------
 export PATH="/usr/bin/flutter/bin/:$PATH"
 export PATH="$PATH:$HOME/.local/scripts"
+
+if string match -q '*hyprland*' (echo $XDG_SESSION_DESKTOP)
+    set -x XDG_CURRENT_DESKTOP Hyprland
+end
