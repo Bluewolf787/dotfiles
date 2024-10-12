@@ -138,8 +138,9 @@ alias df "df -h"
 alias du "du -h"
 
 alias update "sudo pacman -Syu && yay -Syu"
-alias autoremove "sudo pacman -Qdtq | sudo pacman -Rs - && yay -Qdtq | yay -Rs -"
+alias autoremove 'set orphans $(pacman -Qdtq); [ -z "$orphans" ] && echo "There are no orphaned packages" || sudo pacman -Rsc $orphans'
 alias autoclean "sudo pacman -Sc && yay -Sc"
+alias pkglist "pacman -Qs --color=always | less -R"
 
 alias ssh "kitty +kitten ssh"
 
@@ -150,6 +151,8 @@ alias cd.4 "cd ../../../.."
 alias cd.5 "cd ../../../../.."
 
 alias clock "tty-clock -c -C 2"
+alias weather "curl wttr.in/Rostock | head -n -1"
+alias cal3 "cal -3"
 
 alias note "nvim ~/Dokumente/notes.txt"
 
@@ -159,8 +162,16 @@ alias bc "bluetoothctl connect 14:3F:A6:A7:D9:81"
 alias be "systemctl enable bluetooth"
 alias bd "systemctl disable bluetooth"
 
+alias won "nmcli radio wifi on"
+alias woff "nmcli radio wifi off"
+
 alias jdk22 "sudo archlinux-java set java-22-openjdk"
 alias jdk17 "sudo archlinux-java set java-17-openjdk"
+
+alias ipv4 "ip addr show | grep 'inet ' | grep -v '127.0.0.1' | cut -d' ' -f6 | cut -d/ -f1"
+alias ipv6 "ip addr show | grep 'inet6 ' | cut -d ' ' -f6 | sed -n '2p'"
+
+alias error "journalctl -b -p err"
 
 # -----------------------------------------------------
 # Fishmarks
