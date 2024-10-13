@@ -1,191 +1,234 @@
-// ██╗    ██╗ █████╗ ██╗   ██╗██████╗  █████╗ ██████╗ 
+// ██╗    ██╗ █████╗ ██╗   ██╗██████╗  █████╗ ██████╗
 // ██║    ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
 // ██║ █╗ ██║███████║ ╚████╔╝ ██████╔╝███████║██████╔╝
 // ██║███╗██║██╔══██║  ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
 // ╚███╔███╔╝██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║
 //  ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 
-
 {
   // -----------------------------------------------------
   // General
   // -----------------------------------------------------
-  "layer": "top",   
+  "layer": "top",
   "position": "top",
   "mod": "dock",
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 44,
-  "modules-left": ["custom/launcher", "hyprland/workspaces", "cpu", "memory", "disk", "tray", "hyprland/window"],
-  "modules-center": [],
-  "modules-right": ["custom/pacman", "network", "bluetooth", "pulseaudio","pulseaudio#microphone", "backlight", "battery", "clock"],
-  
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "cpu",
+    "memory",
+    "disk",
+    "tray"
+    // "hyprland/window"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "custom/pacman",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "backlight",
+    "battery"
+  ],
 
   // -----------------------------------------------------
-  // Window
+  // LEFT MODULES
   // -----------------------------------------------------
-  "hyprland/window": {
-    "format": "{}"
-  },
-
-  // -----------------------------------------------------
-  // Workspaces
-  // -----------------------------------------------------
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {"1": "", "2": "", "3": "󰅌", "4": "", "5": "󰡨", "6": "󰍹", "7": "󰍹","8": "󰍹", "9": "󰍹"},
-    "persistent-workspaces": {"*": 1, "*": 2, "*": 3, "*": 4}
-  },
 
   // -----------------------------------------------------
   // Launcher
   // -----------------------------------------------------
   "custom/launcher": {
     "format": "󰣇",
+    "tooltip": false,
     "on-click": "~/.config/rofi/bin/launcher",
     "on-click-right": "~/.config/rofi/bin/powermenu"
   },
 
-  // -----------------------------------------------------
-  // Tray
-  // -----------------------------------------------------
-  "tray": {
-    "icon-size": 18,
-    "spacing": 10
-  },
-
-  // -----------------------------------------------------
-  // CPU
-  // -----------------------------------------------------
-  "cpu": {
-    "interval": 1,
-    "format": " {}%"
-  },
-
-  // -----------------------------------------------------
-  // Memory
-  // -----------------------------------------------------
-  "memory": {
-    "interval": 1,
-    "format": " {}%"
-  },
-
-  // -----------------------------------------------------
-  // Disk
-  // -----------------------------------------------------
-  "disk": {
-    "interval": 30,
-    "format": "󰋊 {percentage_used}%"
-  },
-
-  // -----------------------------------------------------
-  // Clock
-  // -----------------------------------------------------
-  "clock": {
-    "format": "{:%e %b, %H:%M %p }",
-    "timezone": "Europe/Berlin",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
-  // -----------------------------------------------------
-  // Backlight
-  // -----------------------------------------------------
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
-  },
-
-  // -----------------------------------------------------
-  // Battery
-  // -----------------------------------------------------
-  "battery": {
-    "interval": 10,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-  },
-
-  // -----------------------------------------------------
-  // Pulseaudio
-  // -----------------------------------------------------
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "tooltip": false,
-    "format-muted": "󰸈 {volume}%",
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
-    "scroll-step": 5,
+  // Workspaces
+  "hyprland/workspaces": {
+    "format": "{icon}",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "󰖀", "󰕾"]
+      "1": "󰆍",
+      "2": "󰖟",
+      "3": "󰺿",
+      "4": "󰅴",
+      "5": "󱘲",
+      "6": "󰡨",
+      "default": "󰍹"
+    },
+    "format-window-separator": "/",
+    "persistent-workspaces": { "*": [1, 2, 3, 4] }
+  },
+
+  // CPU
+  "cpu": {
+    "format": "󰍛 {load}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  // Memory
+  "memory": {
+    "format": "󰘚 {percentage}%",
+    "tooltip-format": "RAM: {used}GiB/{total}GiB - Free: {avail}GiB\nSwap: {swapUsed}GiB/{swapTotal}GiB - Free: {swapAvail}GiB",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  // Disk
+  "disk": {
+    "format": "󰋊 {percentage_used}%",
+    "tooltip-format": "{path}: {used}/{total} - Free: {free}",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  // Tray
+  "tray": {
+    "icon-size": 15,
+    "spacing": 15,
+    "show-passive-items": true
+  },
+
+  // Window
+  "hyprland/window": {
+    "format": "{}"
+  },
+
+  // -----------------------------------------------------
+  // CENTER MODULES
+  // -----------------------------------------------------
+
+  // Clock
+  "clock": {
+    "format": "{:%e %B, %H:%M}",
+    "timezone": "Europe/Berlin",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "format": {
+        "months": "<span color='#d3c6aa'><b>{}</b></span>",
+        "days": "<span color='#d3c6aa'><b>{}</b></span>",
+        "weeks": "<span color='#9da9a0'><b>{:%W}</b></span>",
+        "weekdays": "<span color='#dbbc7f'><b>{}</b></span>",
+        "today": "<span color='#e67e80'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-middle": "mode",
+      "on-click": "shift_down",
+      "on-click-right": "shift_up"
     }
   },
 
   // -----------------------------------------------------
-  // Pulseaudio Microphone
+  // RIGHT MODULES
   // -----------------------------------------------------
+
+  // Pacman Updates
+  "custom/pacman": {
+    "interval": 900,
+    "exec": "checkupdate",
+    "return-type": "json",
+    "format": "󰏕 {}",
+    "hide-empty-text": true,
+    "on-click": "terminal --update; pkill -SIGRTMIN+8 waybar",
+    "signal": 8
+  },
+
+  // Network
+  "network": {
+    "format-wifi": "{icon} {essid}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨 "],
+    "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+    "format-linked": "󰌷 {ifname} (No IP)",
+    "format-disconnected": "󰤫",
+    "format-disabled": "󰤮",
+    "format-alt": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "tooltip-format": "{ipaddr}/{cidr} - {ifname} via {gwaddr}, {signalStrength}%"
+  },
+
+  // Bluetooth
+  "bluetooth": {
+    "format": "󰂯",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "{icon}",
+    "format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+    "format-device-preference": ["WH-1000XM3", "LE_WH-1000XM3"],
+    "tooltip-format": "{status}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias} - {device_address} {device_address_type}",
+    "tooltip-format-connected-battery": "{device_enumerate}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}% - {device_address} {device_address_type}"
+  },
+
+  // Pulseaudio
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰸈 {volume}%",
+    "tooltip-format": "{desc}",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
+    "format-icons": {
+      "speaker": "󰓃",
+      "headphone": "󰋋",
+      "hands-free": "󰋋",
+      "headset": "󰋎",
+      "portable": "",
+      "phone": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    }
+  },
+
+  // Pulseaudio Microphone
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " {volume}%",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭 {volume}%",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
-    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
-    "scroll-step": 5
-  },
-    
-  // -----------------------------------------------------
-  // Network
-  // -----------------------------------------------------
-  "network": {
-    "format-wifi": "󰤨 {essid}",
-    "format-ethernet": "󰈀 {ipaddr}/{cidr}",
-    "tooltip-format": "{essid} - {ifname} via {gwaddr}, {signalStrength}%",
-    "format-linked": "󰈀 {ifname} (No IP)",
-    "format-disconnected": "󰤮",
-    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%"
   },
 
-  // -----------------------------------------------------
-  // Bluetooth
-  // -----------------------------------------------------
-  "bluetooth": {
-	  "format": "󰂯",
-    "format-off": "󰂲",
-	  "format-disabled": "󰂲",
-	  "format-connected": "󰂱",
-    "format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥉"],
-    "tooltip-format": "{status}",
-	  "tooltip-format-connected": "{device_enumerate} {device_battery_percentage}%",
-	  "tooltip-format-enumerate-connected": "{device_alias} {device_battery_percentage}%"
+  // Backlight
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰛩", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+    "tooltip": false,
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-"
   },
 
-  // -----------------------------------------------------
-  // Pacman Updates
-  // -----------------------------------------------------
-  "custom/pacman": {
-    "format": " {}",
-    "interval": 60,
-    "exec": "checkupdate| jq -r '.text'",
-    "on-click": "~/.local/scripts/terminal --update; pkill -SIGRTMIN+8 waybar",
-    "signal": 8
+  // Battery
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "󱟤 {time} remaining, {power}W, {cycles} Cycles, Health: {health}%",
+    "tooltip-format-charging": "󱟦 {time} remaining, {power}W, {cycles} Cycles, Health: {health}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
   }
 }
-
