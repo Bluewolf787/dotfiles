@@ -2,21 +2,19 @@
 
 output="$(checkupdates && yay -Qua)"
 
-if [[ "$output" == "" ]];
-then
-    number="0"
+if [[ -z "$output" ]]; then
+    text=""
+    tooltip=""
 else
-    number="$(echo "$output" | wc -l)"
-fi
+    text="$(echo "$output" | wc -l)"
 
-if [[ $number > 30 ]];
-then
-    tooltip="$(echo "$output" | head -n 20 | sed -z 's/\n/\\n/g')"
+  if [[ $text -gt 30 ]]; then
+    tooltip="$(echo "$output" | head -n 20 | sed ':a;N;$!ba;s/\n/\\n/g')"
     tooltip+='...'
-else
-    tooltip="$(echo "$output" | sed -z 's/\n/\\n/g')"
-    tooltip=${tooltip::-2}
+  else
+    tooltip="$(echo "$output" | sed ':a;N;$!ba;s/\n/\\n/g')"
+  fi
 fi
 
-echo "{\"text\":\""$number"\", \"tooltip\":\""$tooltip"\"}"
+echo {\"text\":\"$text\", \"tooltip\":\"$tooltip\"}
 exit 0
