@@ -159,7 +159,10 @@
     "format-disconnected": "󰤫",
     "format-disabled": "󰤮",
     "format-alt": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "tooltip-format": "{ipaddr}/{cidr} - {ifname} via {gwaddr}, {signalStrength}%"
+    "tooltip-format": "{ipaddr}/{cidr} - {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{ipaddr}/{cidr} - {ifname} via {gwaddr}\nSignal: {signalStrength}%, {signaldBm}dBm\nFrequency: {frequency}MHz",
+    "tooltip-format-disconnected": "disconnected",
+    "tooltip-format-disabled": "disabled"
   },
 
   // Bluetooth
@@ -187,7 +190,6 @@
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
     "format-icons": {
-      "speaker": "󰓃",
       "headphone": "󰋋",
       "hands-free": "󰋋",
       "headset": "󰋎",
