@@ -17,20 +17,13 @@ mixer="`pactl info | grep 'Server Name' | cut -b14-23`"
 speaker="`pactl get-sink-volume @DEFAULT_SINK@ | grep 'Volume' | cut -d'/' -f2 | tr -d \',' '`"
 mic="`pactl get-source-volume @DEFAULT_SOURCE@ | grep 'Volume' | cut -d'/' -f2 | tr -d \',' '`"
 
-active=""
-urgent=""
-
 # -----------------------------------------------------
 # Speaker Info
 # -----------------------------------------------------
 pactl get-sink-mute @DEFAULT_SINK@ | grep 'no' &>/dev/null
 if [[ "$?" == 0 ]]; then
-	active="-a 1"
-	stext='Unmute'
 	sicon='󰕾'
 else
-	urgent="-u 1"
-	stext='Mute'
 	sicon='󰖁'
 fi
 
@@ -39,20 +32,16 @@ fi
 # -----------------------------------------------------
 pactl get-source-mute @DEFAULT_SOURCE@ | grep 'no' &>/dev/null
 if [[ "$?" == 0 ]]; then
-    [ -n "$active" ] && active+=",4" || active="-a 4"
-	mtext='Unmute'
 	micon='󰍬'
 else
-    [ -n "$urgent" ] && urgent+=",4" || urgent="-u 4"
-	mtext='Mute'
 	micon='󰍭'
 fi
 
 # -----------------------------------------------------
 # Theme Elements
 # -----------------------------------------------------
-prompt="S:$stext, M:$mtext"
-mesg="$mixer - Speaker: $speaker, Mic: $mic"
+prompt="$mixer"
+mesg="Speaker: $sicon $speaker, Mic: $micon $mic"
 
 option_1="󰝝"
 option_2="$sicon"
@@ -60,7 +49,7 @@ option_3="󰝞"
 option_4="󰢴"
 option_5="$micon"
 option_6="󰢳"
-option_7="󰓃"
+option_7="󰋍"
 
 # -----------------------------------------------------
 # Rofi CMD
@@ -69,11 +58,9 @@ if [ $# -eq 0 ]; then
   rofi_cmd() {
 	  rofi -theme-str "window {width: 860;}" \
 		  -theme-str "listview {columns: 7; lines: 1;}" \
-		  -theme-str 'textbox-prompt-colon {str: "";}' \
 		  -dmenu \
 		  -p "$prompt" \
 		  -mesg "$mesg" \
-		  ${active} ${urgent} \
 		  -markup-rows \
 		  -theme $THEME_DIR/applet.rasi
   }
@@ -82,12 +69,10 @@ else
   rofi_cmd() {
     rofi -theme-str "window {width: 860;}" \
       -theme-str "listview {columns: 7; lines: 1;}" \
-      -theme-str 'textbox-prompt-colon {str: "󰕾";}' \
       -dmenu \
       -selected-row ${argv} \
       -p "$prompt" \
       -mesg "$mesg" \
-      ${active} ${urgent} \
       -markup-rows \
       -theme $DIR/applet.rasi
   }
