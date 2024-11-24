@@ -117,12 +117,12 @@ end
 # -----------------------------------------------------
 # Alias
 # -----------------------------------------------------
-alias ls "eza -F --icons --group-directories-first"
+alias ls "exa -F --icons --group-directories-first"
 alias la "ls -a"
-alias ll "eza -lahF --icons --group-directories-first --git"
-alias lr "eza -RF --icons --group-directories-first"
-alias lra "eza -aRF --icons --group-directories-first"
-alias lt "eza -aTF --icons --group-directories-first"
+alias ll "exa -lahF --icons --group-directories-first --git"
+alias lr "exa -RF --icons --group-directories-first"
+alias lra "exa -aRF --icons --group-directories-first"
+alias lt "exa -aTF --icons --group-directories-first"
 
 alias cp "cp -iv"
 alias mv "mv -iv"
@@ -158,6 +158,8 @@ alias bd "systemctl disable bluetooth"
 
 alias jdk22 "sudo archlinux-java set java-22-openjdk"
 alias jdk17 "sudo archlinux-java set java-17-openjdk"
+
+alias bat "batcat"
 
 # -----------------------------------------------------
 # Fishmarks
