@@ -131,8 +131,8 @@ alias cp "cp -iv"
 alias mv "mv -iv"
 alias rm "rm -iv"
 
-alias copy "rsync -aP"
-alias move "rsync -aP --remove-source-file"
+alias copy "rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1"
+alias move " rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files"
 
 alias df "df -h"
 alias du "du -h"
