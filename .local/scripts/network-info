@@ -1,0 +1,35 @@
+#!/bin/bash
+
+wifi="`nmcli | grep wlan0 | sed 's/wlan0: \([^ ]*\) to.*/\1/' | awk 'NR==1' | cut -d':' -f2 | tr -d ' '`"
+
+wifi_icon=""
+case $wifi in
+    (connected)
+        wifi_icon="󰤨"
+        ;;
+    (disconnected)
+        wifi_icon="󰤭"
+        ;;
+    (unavailable)
+        wifi_icon="󰤩"
+        ;;
+esac
+
+ethernet="`nmcli | grep enp2s0 | sed 's/enp2s0: \([^ ]*\) .*/\1/' | awk 'NR==1' | cut -d':' -f2 | tr -d ' '`"
+
+ethernet_icon=""
+case $ethernet in
+    (connected)
+        ethernet_icon="󰌘"
+        ;;
+    (connecting)
+        ethernet_icon="󰌚"
+        ;;
+    (unavailable)
+        ethernet_icon="󰌙"
+        ;;
+esac
+
+bluetooth="``"
+
+echo "$ethernet_icon $wifi_icon "
