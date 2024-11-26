@@ -179,6 +179,11 @@ alias error "journalctl -b -p err"
 source ~/.fishmarks/marks.fish
 
 # -----------------------------------------------------
+# asdf
+# -----------------------------------------------------
+source /opt/asdf-vm/asdf.fish
+
+# -----------------------------------------------------
 # ENVIRONMENT
 # -----------------------------------------------------
 export PATH="/usr/bin/flutter/bin/:$PATH"
