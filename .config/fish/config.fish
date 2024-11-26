@@ -165,13 +165,30 @@ alias bd "systemctl disable bluetooth"
 alias won "nmcli radio wifi on"
 alias woff "nmcli radio wifi off"
 
-alias jdk22 "sudo archlinux-java set java-22-openjdk"
-alias jdk17 "sudo archlinux-java set java-17-openjdk"
-
 alias ipv4 "ip addr show | grep 'inet ' | grep -v '127.0.0.1' | cut -d' ' -f6 | cut -d/ -f1"
 alias ipv6 "ip addr show | grep 'inet6 ' | cut -d ' ' -f6 | sed -n '2p'"
 
 alias error "journalctl -b -p err"
+
+# -----------------------------------------------------
+# Functions
+# -----------------------------------------------------
+function cl
+    if test -d $argv[1]
+        cd $argv[1]
+        ll
+    else
+        echo "cl: The directory '$argv[1]' does not exist"
+    end
+end
+
+function jdk
+    if test (count $argv) -eq 0
+        archlinux-java status
+    else
+        sudo archlinux-java set java-$argv[1]-openjdk
+    end
+end
 
 # -----------------------------------------------------
 # Fishmarks
