@@ -313,3 +313,19 @@ to this
 HandlePowerKey=ignore
 HandlePowerKeyLongPress=poweroff
 ```
+
+### Powersaving (Notebook)
+
+- Create `audio_powersave.conf` in `/etc/modprobe.d/`. <br>
+
+```
+options snd_hda_intel power_save=5
+```
+
+> Note: This applies to an Intel soundcard.
+
+- Create `nowebcam.conf` in `/etc/modprobe.d/`. <br>
+
+```
+blacklist uvcvideo
+```
