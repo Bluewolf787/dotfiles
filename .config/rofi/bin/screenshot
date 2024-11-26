@@ -28,11 +28,11 @@ mesg="DIR: $images_dir"
 # -----------------------------------------------------
 # Options
 # -----------------------------------------------------
-option_1="󰍹"
+option_1="󰹑"
 option_2="󰩭"
-option_3=""
-option_4=""
-option_5="󱉦"
+option_3="󰖯"
+option_4="󰖲"
+option_5="󰅌"
 
 # -----------------------------------------------------
 # Rofi CMD
@@ -40,7 +40,6 @@ option_5="󱉦"
 rofi_cmd() {
 	rofi -theme-str "window {width: 670px;}" \
 		-theme-str "listview {columns: 5; lines: 1;}" \
-		-theme-str 'textbox-prompt-colon {str: " ";}' \
 		-dmenu \
 		-p "$prompt" \
 		-mesg "$mesg" \

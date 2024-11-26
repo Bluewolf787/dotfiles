@@ -13,18 +13,18 @@ THEME_DIR="$HOME/.config/rofi/themes"
 # -----------------------------------------------------
 # CMDs
 # -----------------------------------------------------
-lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
+lastlogin="`last | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
 uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # -----------------------------------------------------
 # Options
 # -----------------------------------------------------
-shutdown="󰤆"
-reboot=""
-lock=""
-suspend=""
-logout=""
+shutdown="󰐥"
+reboot="󰜉"
+lock="󰍁"
+suspend="󰤄"
+logout="󰍃"
 yes="󰰳"
 no="󰰒"
 
@@ -35,9 +35,9 @@ rofi_cmd() {
 	rofi -theme-str "window {width: 670px;}" \
     -theme-str "listview {columns: 5; lines: 1;}" \
     -dmenu \
-		-p " $USER" \
-		-mesg "󰍹 Last Login: $lastlogin |  Uptime: $uptime" \
-		-theme $THEME_DIR/powermenu.rasi
+		-p "$USER" \
+		-mesg "Last Login: $lastlogin | Uptime: $uptime" \
+		-theme $THEME_DIR/applet.rasi
 }
 
 # -----------------------------------------------------

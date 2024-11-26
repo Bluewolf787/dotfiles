@@ -20,11 +20,11 @@ mesg="https:// Mail / GitHub / grep.app / Reddit / Hypr Docs / ArchWiki"
 # Options
 # -----------------------------------------------------
 option_1="󰊫"
-option_2=""
+option_2="󰊤"
 option_3="󰲋"
-option_4=""
+option_4="󰑍"
 option_5=""
-option_6=""
+option_6="󰣇"
 
 # -----------------------------------------------------
 # Rofi CMD
@@ -32,7 +32,6 @@ option_6=""
 rofi_cmd() {
   rofi -theme-str "window {width: 800px;}" \
     -theme-str "listview {colums: 7; lines: 1;}" \
-    -theme-str 'textbox-prompt-colon {str: "";}' \
     -dmenu \
     -p "$prompt" \
     -mesg "$mesg" \
