@@ -7,12 +7,14 @@
  *  ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝
 **/
 
+@import "waybar-colors.css";
 
-@import 'waybar-colors.css';
-
+/* -----------------------------------------------------
+ * GENERAL
+ * -----------------------------------------------------
+**/
 * {
-  border-radius: 0px;
-  font-family: "Jetbrains Mono Nerd Font";
+  font-family: "JetBrainsMono Nerd Font";
   font-weight: 500;
   font-size: 14px;
   min-height: 20px;
@@ -26,185 +28,188 @@ window#waybar {
 tooltip {
   background: @tooltip-bg;
   border-radius: 7px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
+}
+tooltip label {
+  color: @foreground;
 }
 
+.module {
+  background: @background;
+  color: @foreground;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 6px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 7px;
+}
+
+/* -----------------------------------------------------
+ * LEFT MODULES
+ * -----------------------------------------------------
+**/
+/* LAUNCHER MODULE */
+#custom-launcher {
+  color: @highlight-blue;
+  padding-right: 13.5px;
+}
+
+/* WORKSPACE MODULE */
+#workspaces {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 #workspaces button {
-  padding: 5px;
+  color: @foreground;
+  padding-left: 4px;
+  padding-right: 5px;
+}
+
+#workspaces button.empty {
   color: @workspace;
-  margin-right: 5px;
 }
 
 #workspaces button.active {
-  color: @foreground;
+  color: @active;
 }
 
-#window,
-#clock,
-#battery,
-#mpris,
-#pulseaudio,
-#custom-pacman,
-#network,
-#bluetooth,
-#temperature,
-#workspaces,
-#tray,
-#mpd,
-#custom-pomodoro,
-#cpu,
-#memory,
-#disk,
-#custom-spotify,
-#custom-launcher,
-
-#modbackground {
-  background: @background;
-  color: @foreground;
-  opacity: 1;
-  padding: 0px 7px;
-  margin-top: 5px;
-  margin-bottom: 6px;
-}
-
-#backlight {
-  color: @foreground;
-  background: @background;
-  border-radius: 7px 7px 7px 7px;
-  opacity: 1;
-  padding: 0px 7px;
-  margin-top: 5px;
-  margin-right: 5px;
-  margin-bottom: 6px;
-}
-
-#pulseaudio {
-  border-radius: 7px 0px 0px 7px;
-  border-left: 0px;
-  border-right: 0px;
-}
-
-#pulseaudio.microphone {
-  border-left: 0px;
-  border-right: 0px;
-  border-radius: 0px 7px 7px 0px;
-  margin-right: 5px;
-}
-
+/* SYSTEM INFO MODULES */
 #cpu {
-  border-radius: 7px 0px 0px 7px;
-  margin-left: 5px;
+  border-radius: 7px 0 0 7px;
+  margin-right: 0;
+}
+#cpu.warning {
+  color: @highlight-orange;
+}
+#cpu.critical {
+  color: @urgent;
 }
 
 #memory {
   border-radius: 0px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#memory.warning {
+  color: @highlight-orange;
+}
+#memory.critical {
+  color: @urgent;
 }
 
 #disk {
   border-radius: 0px 7px 7px 0px;
-  margin-right: 5px;
+  margin-left: 0;
+}
+#disk.warning {
+  color: @highlight-orange;
+}
+#disk.critical {
+  color: @urgent;
 }
 
+/* TRAY MODULE */
 #tray {
-  border-radius: 7px;
-  margin-right: 5px;
-  margin-left: 10px;
   background: transparent;
+  border: 2px solid @foreground;
 }
 
-#workspaces {
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-right: 5px;
-  padding-left: 5px;
-}
+/* WINDOW MODULE */
+/* #window {
+} */
 
-#window {
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-right: 60px;
-}
-
+/* -----------------------------------------------------
+ * CENTER MODULES
+ * -----------------------------------------------------
+**/
+/* TIME/DATE MODULE */
 #clock {
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-left: 10px;
-  padding-right: 0px;
 }
 
+/* -----------------------------------------------------
+ * RIGHT MODULES
+ * -----------------------------------------------------
+**/
+/* PACMAN MODULE */
+#custom-pacman {
+}
+
+/* NETWORK MODULE */
 #network {
-  border-radius: 7px;
-  margin-right: 15px;
-  border-left: 0px;
-  border-right: 0px;
+  margin-right: 2.5px;
+}
+#network.wifi,
+#network.ethernet,
+#network.linked {
+  background: @active;
+  color: @background;
+}
+#network.disconnected {
+  background: @urgent;
+  color: @background;
+  padding-right: 15px;
+}
+#network.disabled {
+  padding-right: 15px;
 }
 
+/* BLUETOOTH MODULE */
 #bluetooth {
-  border-radius: 7px;
-  margin-right: 5px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
 }
-
-#bluetooth.on, #bluetooth.connected {
+#bluetooth.on,
+#bluetooth.connected {
   background: @highlight-blue;
   color: @background;
 }
-
 #bluetooth.discoverable {
   background: @highlight-yellow;
   color: @background;
 }
-
 #bluetooth.discovering {
   background: @highlight-aqua;
   color: @background;
 }
-
 #bluetooth.pairable {
   background: @highlight-purple;
   color: @background;
 }
 
-#battery {
-  border-radius: 7px;
-  margin-right: 5px;
-  margin-left: 10px;
-  border-left: 0px;
+/* PULSEAUDIO MODULE */
+#pulseaudio {
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 2.5px;
+  margin-right: 0;
+}
+#pulseaudio.microphone {
+  border-radius: 0px 7px 7px 0px;
+  margin-left: 0;
+  margin-right: 2.5px;
 }
 
+/* BACKLIGHT MODULE */
+#backlight {
+  margin-left: 2.5px;
+}
+
+/* BATTERY MODULE */
+#battery {
+}
 #battery.plugged {
   background: @active;
   color: @background;
 }
-
 #battery.charging {
   background: @highlight-yellow;
   color: @background;
 }
-
 #battery.warning {
   background: @highlight-orange;
   color: @background;
 }
-
 #battery.critical {
   background: @urgent;
   color: @background;
 }
-
-#custom-launcher {
-  border-radius: 7px;
-  margin-left: 10px;
-  margin-right: 5px;
-  padding-right: 12px;
-  padding-left: 10px;
-}
-
-#custom-pacman {
-  border-radius: 7px;
-  margin-right: 5px;
-}
-

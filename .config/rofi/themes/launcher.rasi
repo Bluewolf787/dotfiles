@@ -13,10 +13,10 @@ configuration {
 	modi:                       "drun,filebrowser,window";
     show-icons:                 true;
     icon-theme:                 "Papirus";
-    display-drun:               " Apps";
-    display-run:                " Run";
-    display-filebrowser:        " Filebrowser";
-    display-window:             " Windows";
+    display-drun:               "󰀻 Apps";
+    display-run:                "󰞷 Run";
+    display-filebrowser:        "󰡰 Filebrowser";
+    display-window:             "󰖯 Windows";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -78,7 +78,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         "";
     width:                       45px;
     padding:                     12px 15px;
     border-radius:               10px;

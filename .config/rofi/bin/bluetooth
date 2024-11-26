@@ -12,9 +12,6 @@ THEME_DIR="$HOME/.config/rofi/themes/"
 
 device_name="`bluetoothctl show | grep 'Name' | cut -d':' -f2 | tr -d ' '`"
 
-active=""
-urgent=""
-
 # -----------------------------------------------------
 # Power Info
 # -----------------------------------------------------
@@ -45,10 +42,10 @@ fi
 bluetoothctl show | grep 'Pairable: no' &>/dev/null
 if [[ "$?" == 0 ]]; then
   pairable_text="NO"
-  pairable_icon="󰂰"
+  pairable_icon="󰄢"
 else
   pairable_text="YES"
-  pairable_icon="󰂰"
+  pairable_icon="󰄡"
 fi
 
 # -----------------------------------------------------
@@ -57,10 +54,10 @@ fi
 bluetoothctl show | grep 'Discoverable: no' &>/dev/null
 if [[ "$?" == 0 ]]; then
   discoverable_text="NO"
-  discoverable_icon="󰂳"
+  discoverable_icon="󰛑"
 else
   discoverable_text="YES"
-  discoverable_icon="󰂳"
+  discoverable_icon="󰛐"
 fi
 
 # -----------------------------------------------------
@@ -73,7 +70,7 @@ option_1="$power_icon"
 option_2="$connected_icon"
 option_3="$pairable_icon"
 option_4="$discoverable_icon"
-option_5=""
+option_5="󰂳"
 
 # -----------------------------------------------------
 # Rofi CMD
@@ -81,11 +78,9 @@ option_5=""
 rofi_cmd() {
   rofi -theme-str "window {width: 670px;}" \
     -theme-str "listview {columns: 5; lines: 1;}" \
-    -theme-str 'textbox-prompt-colon {str: "";}' \
     -dmenu \
     -p "$prompt" \
     -mesg "$mesg" \
-    ${active} ${urgent} \
     -markup-rows \
     -theme $THEME_DIR/applet.rasi
 }
