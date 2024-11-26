@@ -22,7 +22,8 @@
     "cpu",
     "memory",
     "disk",
-    "tray"
+    "tray",
+    "mpris"
     // "hyprland/window"
   ],
   "modules-center": ["clock"],
@@ -100,6 +101,21 @@
     "icon-size": 15,
     "spacing": 15,
     "show-passive-items": true
+  },
+
+  "mpris": {
+    "interval": 1,
+    "max-length": 20,
+    "format": "{player_icon} {title}",
+    "format-paused": "{player_icon} {title}",
+    "player-icons": {
+      "default": "▶",
+      "spotify": ""
+    },
+    "status-icons": {
+      "paused": ""
+    },
+    "ignored-players": ["vlc", "firefox", "brave"]
   },
 
   // Window
