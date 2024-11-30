@@ -137,7 +137,7 @@ alias move " rsync --archive -hh --partial --info=stats1,progress2 --modify-wind
 alias df "df -h"
 alias du "du -h"
 
-alias update "sudo pacman -Syu && yay -Syu && pkill -SIGRTMIN+8 waybar"
+alias update "sudo pacman -Syu && yay -Syu"
 alias autoremove 'set orphans $(pacman -Qdtq); [ -z "$orphans" ] && echo "There are no orphaned packages" || sudo pacman -Rsc $orphans'
 alias autoclean "sudo pacman -Sc && yay -Sc"
 alias pkglist "pacman -Qs --color=always | less -R"
