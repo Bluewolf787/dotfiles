@@ -9,9 +9,8 @@
 
 ---
 
-1. [Preview](#preview)
-2. [Installation](#installation)
-3. [Packages](#packages)
+1. [Installation](#installation)
+2. [Packages](#packages)
    1. [Hypr](#hypr)
    2. [Essentials](#essentials)
    3. [Drivers](#drivers)
@@ -24,26 +23,13 @@
       2. [Graphical](#graphical)
    5. [Fonts](#fonts)
    6. [Other](#other)
-4. [Configuration](#configuration)
+3. [Configuration](#configuration)
    1. [Git](#git)
    2. [Bluetooth](#bluetooth)
    3. [fprintd](#fprintd)
    4. [Power Button Behavior](#power-button-behavior)
    5. [Powersaving (Notebook)](<#powersaving-(notebook)>)
-5. [Fixes](#fixes)
-
 ---
-
-## Preview
-
-| ![overall-preview](preview/overall.png)                     | ![floating-nvim-preview](preview/floating-nvim.png) |
-| ----------------------------------------------------------- | --------------------------------------------------- |
-| ![browser-startpage-preview](preview/browser-startpage.png) | ![hyprlock-preview](preview/hyprlock.png)           |
-
-| ![app-launcher-preview](preview/app-launcher.png)       | ![power-menu-preview](preview/power-menu.png)           |
-| ------------------------------------------------------- | ------------------------------------------------------- |
-| ![bluetooth-menu-preview](preview/bluetooth-menu.png)   | ![sound-menu-preview](preview/sound-menu.png)           |
-| ![screenshot-menu-preview](preview/screenshot-menu.png) | ![quicklinks-menu-preview](preview/quicklinks-menu.png) |
 
 ## Installation (not finished yet)
 
